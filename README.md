@@ -15,7 +15,7 @@ $ sudo npm install -g etpl2to3
 
 ## 使用
 
-直接输入 `etpl2to3` 可以看到详细的帮助信息。通过 `etpl2to3` 可以转换一个模板文件，也可以通过指定扩展名，批量转换一个目录下的所有模板文件。
+直接输入 `etpl2to3` 可以看到详细的帮助信息。
 
 ```
 $ etpl2to3
@@ -30,3 +30,47 @@ $ etpl2to3
     -e, --extname <extname>  Tpl file extname, use when input is directory. Default ".tpl.html"
     --override               Override when output file exists
 ```
+
+通过 `etpl2to3` 可以转换一个模板文件，也可以通过指定扩展名，批量转换一个目录下的所有模板文件。
+
+#### 转换一个文件
+
+```
+$ etpl2to3 tplfile -o newtplfile
+```
+
+#### 转换一个文件 (如果-o文件存在时，覆盖它)
+
+```
+$ etpl2to3 tplfile -o newtplfile --override
+```
+
+#### 转换一个文件，直接覆盖当前文件
+
+指定`输入文件`和`输出文件`相同时，将直接覆盖当前文件。不推荐这种方式。如果你的文件没有使用版本管理，千万不要这样做。
+
+```
+$ etpl2to3 src-directory -o src-directory --override
+```
+
+#### 转换一个目录
+
+```
+$ etpl2to3 src-directory -o new-src-directory
+```
+
+#### 转换一个目录 (如果-o目录存在时，覆盖它)
+
+```
+$ etpl2to3 src-directory -o new-src-directory --override
+```
+
+#### 转换一个目录，直接覆盖当前文件
+
+指定`输入目录`和`输出目录`相同时，将直接覆盖当前文件。不推荐这种方式。如果你的文件没有使用版本管理，千万不要这样做。
+
+```
+$ etpl2to3 src-directory -o src-directory --override
+```
+
+
