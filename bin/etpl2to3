@@ -1,0 +1,75 @@
+#! /usr/bin/env node
+
+
+var fs = require('fs');
+var path = require('path');
+
+function readFile(fileName) {
+    return fs.readFileSync(
+        path.resolve(__dirname, fileName),
+        'UTF-8'
+    );
+}
+
+// read package info
+var pkgInfo = JSON.parse(readFile('../package.json'));
+
+
+// parse args
+var program = require('commander');
+program
+    .version(pkgInfo.version)
+    .usage('<input file/directory> [options]')
+    .option('-o, --output <output>', 'Output file or directory')
+    .option('-e, --extname <extname>', 'Tpl file extname, use when input is directory. Default ".tpl.html"')
+    .option('--override', 'Override when output file exists')
+    .parse(process.argv);
+
+// merge option
+var options = {
+    commandOpen: program['command-open'] || "<!--",
+    commandClose: program['command-close'] || "-->",
+    extname: program['extname'] || '.tpl.html',
+    override: !!program['override']
+};
+var extname = options.extname;
+
+
+var output = program.output;
+var input = program.args[0];
+if (!input) {
+    // this method will exit immediately
+    program.help();
+}
+
+if (!fs.existsSync(input)) {
+    console.log('Input Error: ' + input + ' not exists!');
+    process.exit(1);
+}
+
+
+var TplFile = require('../lib/TplFile');
+var TplDirectory = require('../lib/TplDirectory');
+
+var inputStat = fs.statSync(input);
+if (inputStat.isDirectory()) {
+    // convert a directory
+    var tplDirectory = new TplDirectory(options, input, output);
+    try {
+        tplDirectory.output();
+    }
+    catch (ex) {
+        console.log(ex.message);
+    }
+}
+else {
+    // just convert single file
+    var tplFile = new TplFile(options, input, output, input);
+    try {
+        tplFile.output();
+    }
+    catch (ex) {
+        console.log(ex.message);
+    }
+}
+

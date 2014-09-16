@@ -1,0 +1,21 @@
+<!-- target: varSimpleTarget --><!-- var: myVar = 'etpl' -->
+Hello ${myVar}!
+
+<!-- target: varSimpleFilterTarget --><!-- var: word = 'etpl' --><!-- var: myVar = ${word|var-emphasis} -->
+Hello ${myVar}
+
+<!-- target: varSimpleFilterArgTarget --><!-- var: word = 'etpl' --><!--var:level=3--><!-- var: myVar = ${word | var-emphasis( ${level} )} -->
+Hello ${myVar}
+
+<!-- target: varBreakLineTarget --><!-- var: erik = {
+    age: 29,
+    sex: 1
+} --><!-- if: ${erik.sex} -->male<!-- else -->female<!-- /if -->
+
+<!-- target: varPriorNoVarTarget -->Hello ${name}!
+<!-- target: varPriorVarTarget --><!-- var: name = '<b>etpl</b>' -->Hello ${name}!
+
+<!-- target: varBATarget -->
+Hello ${name}!
+<!-- var: name = '<b>etpl</b>' -->
+Hello ${name}!

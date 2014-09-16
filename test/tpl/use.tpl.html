@@ -1,0 +1,53 @@
+<!-- target: useEngineTarget -->Engine(${engine})<!-- use: useEngine2Target() -->
+<!-- target: useEngine2Target -->Engine(${engine})
+<!-- target: useSimpleTarget -->
+<ul>
+<!-- for: ${persons} as ${person} -->
+<!-- use: usePersonTarget( name = ${person.name} , email=${person.email} ) -->
+<!-- /for -->
+</ul>
+<!-- target: useSimpleFilterTarget -->
+<ul>
+<!-- for: ${persons} as ${person} -->
+<!-- use: usePersonTarget( name = ${person.name|use-prefix} , email=${person.email} ) -->
+<!-- /for -->
+</ul>
+<!-- target: useSimpleFilterArgTarget --><!-- var: pre = 'halfbrain' -->
+<ul>
+<!-- for: ${persons} as ${person} -->
+<!-- use: usePersonTarget( name = ${person.name|use-prefix( ${pre} )} , email=${person.email} ) -->
+<!-- /for -->
+</ul>
+<!-- target: useSimpleTargetBreakLine -->
+<ul>
+<!-- for: ${persons} as ${person} -->
+<!--
+    use: usePersonTarget(
+        name = ${person.name},
+        email = ${person.email}
+    )
+-->
+<!-- /for -->
+</ul>
+<!-- target: usePersonTarget --><li>${name}[${email}]
+
+<!-- target: useDepTarget( master = useDepMaster ) -->
+<!-- content: header --><!-- use: useDepHeaderTarget() -->
+
+<!-- master: useDepMaster -->
+<header><!-- contentplaceholder: header --></header>
+<div><!-- use: useDepBodyTarget( name=${engine} ) --></div>
+<!-- target: useDepBodyTarget -->${name}
+<!-- target: useDepHeaderTarget -->header
+
+<!-- target: useRecursionTarget --><!-- use: useRecursionMenuTarget(children=${menu}) --><!-- /target -->
+
+<!-- target: useRecursionMenuTarget -->
+<ul>
+    <!-- for: ${children} as ${item} -->
+    <li><a href="#">${item.text}</a>
+        <!-- if: ${item.children} && ${item.children.length} --><!-- use: useRecursionMenuTarget(children=${item.children}) --><!-- /if -->
+    </li>
+    <!-- /for -->
+</ul>
+<!-- /target -->

@@ -1,0 +1,21 @@
+<!-- target: filterSimpleTarget -->
+<!-- filter: html() --><b>Hello etpl!</b><!-- /filter -->
+
+<!-- target: filterNestedTarget -->
+<!-- filter: html() --><b>Hello <!--filter: url() --><em>etpl&er</em><!-- /filter -->!</b><!-- /filter -->
+
+<!-- target: filterParamTarget -->
+<!-- filter: filter-lower -->ETPL<!-- /filter --> <!-- filter: filter-lower(true) -->ETPL<!-- /filter -->
+
+<!-- target: filterParamVariableTarget --><!-- var: arg = 1 -->
+<!-- filter: filter-lower -->ETPL<!-- /filter --> <!-- filter: filter-lower(!!${arg}) -->ETPL<!-- /filter -->
+
+<!-- target: filterParamVariableFilterTarget --><!-- var: arg = 1 -->
+<!-- filter: filter-lower -->ETPL<!-- /filter --> <!-- filter: filter-lower(!${arg | filter-not}) -->ETPL<!-- /filter -->
+
+<!-- target: filterParamTargetBreakLine -->
+<!-- filter: filter-lower -->ETPL<!-- /filter --> <!-- filter:
+    filter-lower(
+        true
+    )
+-->ETPL<!-- /filter -->

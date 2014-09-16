@@ -1,0 +1,29 @@
+{
+    "name": "etpl2to3",
+    "description": "Convert ETpl syntax from 2 to 3.",
+    "version": "1.0.0",
+
+    "contributors": [
+        { "name": "errorrik", "email": "errorrik@gmail.com" },
+        { "name": "wurongyao" }
+    ],
+
+    "dependencies": {
+        "commander": "~2.3.0",
+        "mkdirp": "0.5.0"
+    },
+
+    "scripts": {
+        "test": "jasmine-node test"
+    },
+
+    "bin": {
+        "etpl2to3": "./bin/etpl2to3"
+    },
+
+    "devDependencies": {
+        "jasmine-node": "1.14.2"
+    },
+
+    "repository": "git://github.com/ecomfe/etpl2to3"
+}

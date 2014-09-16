@@ -1,0 +1,41 @@
+
+<!-- target:masterSimpleTarget( master = masterSimple ) -->
+<!-- content:content1 -->abc<!-- /content -->
+
+<!-- master:masterSimple --><!-- contentplaceholder:content1 -->def
+
+<!-- target:masterSimple2Target( master = masterSimple2 ) -->
+<!-- content:header -->header
+<!-- content:body -->body
+<!-- content:footer -->footer
+<!--
+target:masterSimple2TargetBreakline(
+    master = masterSimple2
+)
+-->
+<!-- content:header -->header
+<!-- content:body -->body
+<!-- content:footer -->footer
+<!-- master:masterSimple2 -->
+<header><!-- contentplaceholder: header --></header>
+<div><!-- contentplaceholder: body --></div>
+<footer><!-- contentplaceholder: footer --></footer>
+
+<!-- master:masterDefaultCPH -->
+<div class="header">
+<!-- contentplaceholder:header -->header<!-- /contentplaceholder -->
+</div>
+<div class="body">
+<!-- contentplaceholder:body -->body<!-- /contentplaceholder -->
+</div>
+<!-- target:masterDefaultCPHTarget(master=masterDefaultCPH) -->
+<!-- content:body -->body2
+
+<!-- master:masterFather -->
+<div class="header">
+<!-- contentplaceholder:header -->header<!-- /contentplaceholder -->
+</div>
+<div class="body">
+<!-- contentplaceholder:body -->body<!-- /contentplaceholder -->
+</div>
+
