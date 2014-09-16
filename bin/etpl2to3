@@ -20,7 +20,7 @@ var program = require('commander');
 program
     .version(pkgInfo.version)
     .usage('<input file/directory> [options]')
-    .option('-o, --output <output>', 'Output file or directory')
+    .option('-o, --output <output>', 'Output file/directory')
     .option('-e, --extname <extname>', 'Tpl file extname, use when input is directory. Default ".tpl.html"')
     .option('--override', 'Override when output file exists')
     .parse(process.argv);
